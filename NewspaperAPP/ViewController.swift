@@ -35,6 +35,17 @@ class ViewController: UIViewController {
         
         return activityIndicator
     }
-
+    
 }
 
+extension ViewController {
+    func showAlert(with title: String, and message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+    
+}

@@ -7,8 +7,7 @@
 
 import Foundation
 
-// Взято с сайта https://newsapi.org/s/russia-news-api
-// Get запрос ttps://newsapi.org/v2/top-headlines?country=ru&apiKey=API_KEY
+
 
 struct News: Decodable {
     let status: String

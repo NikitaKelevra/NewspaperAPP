@@ -6,15 +6,18 @@
 //
 
 import Foundation
+import UIKit
 
 class NetworkManager {
     
     static let shared = NetworkManager()
-    
     private init() {}
     
-    let urlAdress = "ttps://newsapi.org/v2/top-headlines?country=ru&apiKey=API_KEY"
+    private let urlAdress = Data.shared.urlAdress
     
+//    let alert = UIAlertController()
+
+    // MARK: - Function
     func fetchNews() {
         guard let url = URL(string: urlAdress) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -22,8 +25,8 @@ class NetworkManager {
                 print(error?.localizedDescription ?? "No error description")
                 return
             }
+            print(data)
             print(response)
-            
             do {
                 let news = try JSONDecoder().decode(News.self, from: data)
                 print(news)
@@ -36,4 +39,5 @@ class NetworkManager {
         
     }
         
+    
 }
