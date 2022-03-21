@@ -22,16 +22,17 @@ class NetworkManager {
         guard let url = URL(string: urlAdress) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, let response = response else {
-                print(error?.localizedDescription ?? "No error description")
+//                print(error?.localizedDescription ?? "No error description")
                 return
             }
-            print(data)
-            print(response)
+//            print(data)
+            print("Описание пришедшего (response) - \(response)")
             do {
                 let news = try JSONDecoder().decode(News.self, from: data)
-                print(news)
+                print("Новости пришли - \(news)")
             } catch let error {
-                print(error.localizedDescription)
+                print("Произошла ошибка парсинга - \(error.localizedDescription)")
+                debugPrint("Ключ парсинга отсутствует или опечатан - \(error)")
             }
             
             

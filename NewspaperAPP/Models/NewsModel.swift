@@ -5,29 +5,30 @@
 //  Created by Сперанский Никита on 15.03.2022.
 //
 
+
 import Foundation
 
-
-
-struct News: Decodable {
+// MARK: - Welcome
+struct News: Codable {
     let status: String
     let totalResults: Int
-    let articles: [Info]
+    let articles: [Article]
 }
 
-struct Info: Decodable {
-    let source: SourceNews
+// MARK: - Article
+struct Article: Codable {
+    let source: Source
     let author: String?
     let title: String
-    let description: String
-    let url: URL
-    let urlToImage: URL
+    let description: String?
+    let url: String
+    let urlToImage: String?
     let publishedAt: String
-    let content: String
+    let content: String?
 }
 
-struct SourceNews: Decodable {
+// MARK: - Source
+struct Source: Codable {
     let id: String?
     let name: String
-
 }
