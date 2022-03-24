@@ -13,7 +13,7 @@ class NetworkManager {
     static let shared = NetworkManager()
     private init() {}
     
-    private let urlAdress = Data.shared.urlAdress
+    private let urlAdress = "https://newsapi.org/v2/top-headlines?country=ru&apiKey=2d11d6b520594f1ea9f0bd3feabfdf12"
     
 //    let alert = UIAlertController()
 
@@ -22,11 +22,11 @@ class NetworkManager {
         guard let url = URL(string: urlAdress) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, let response = response else {
-//                print(error?.localizedDescription ?? "No error description")
                 return
             }
-//            print(data)
+            
             print("Описание пришедшего (response) - \(response)")
+            
             do {
                 let news = try JSONDecoder().decode(News.self, from: data)
                 print("Новости пришли - \(news)")
