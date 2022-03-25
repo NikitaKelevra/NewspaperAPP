@@ -9,13 +9,29 @@ import UIKit
 
 class NewsWeekViewController: UIViewController {
 
+    
+    var viewModel:NewsWeekViewModelProtocol! {
+        didSet {
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+
     }
     
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 

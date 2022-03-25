@@ -17,6 +17,7 @@
 		68BF3B5427E1056F0024FA36 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BF3B5327E1056F0024FA36 /* NetworkManager.swift */; };
 		68BF3B5D27E791510024FA36 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BF3B5C27E791510024FA36 /* AlertController.swift */; };
 		68D05F2B27ECE21C007FC3D8 /* NewsWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D05F2A27ECE21C007FC3D8 /* NewsWeekViewController.swift */; };
+		68D05F2D27ECE26F007FC3D8 /* NewsWeekViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D05F2C27ECE26F007FC3D8 /* NewsWeekViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		68BF3B5327E1056F0024FA36 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		68BF3B5C27E791510024FA36 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		68D05F2A27ECE21C007FC3D8 /* NewsWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWeekViewController.swift; sourceTree = "<group>"; };
+		68D05F2C27ECE26F007FC3D8 /* NewsWeekViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWeekViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				68D05F2A27ECE21C007FC3D8 /* NewsWeekViewController.swift */,
+				68D05F2C27ECE26F007FC3D8 /* NewsWeekViewModel.swift */,
 			);
 			path = NewsWeek;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				68D05F2B27ECE21C007FC3D8 /* NewsWeekViewController.swift in Sources */,
 				68BF3B5D27E791510024FA36 /* AlertController.swift in Sources */,
 				68BF3B4027E0F8D70024FA36 /* SceneDelegate.swift in Sources */,
+				68D05F2D27ECE26F007FC3D8 /* NewsWeekViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
