@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68A92D6727EF489C00FD71E7 /* NewWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A92D6627EF489C00FD71E7 /* NewWeekCell.swift */; };
+		68A92D6927EF4BFC00FD71E7 /* NewsWeekCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A92D6827EF4BFC00FD71E7 /* NewsWeekCollectionViewController.swift */; };
 		68BF3B3E27E0F8D70024FA36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BF3B3D27E0F8D70024FA36 /* AppDelegate.swift */; };
 		68BF3B4027E0F8D70024FA36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BF3B3F27E0F8D70024FA36 /* SceneDelegate.swift */; };
 		68BF3B4227E0F8D70024FA36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BF3B4127E0F8D70024FA36 /* ViewController.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		68A92D6627EF489C00FD71E7 /* NewWeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWeekCell.swift; sourceTree = "<group>"; };
+		68A92D6827EF4BFC00FD71E7 /* NewsWeekCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWeekCollectionViewController.swift; sourceTree = "<group>"; };
 		68BF3B3A27E0F8D70024FA36 /* NewspaperAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewspaperAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BF3B3D27E0F8D70024FA36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68BF3B3F27E0F8D70024FA36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,13 +72,15 @@
 			children = (
 				68BF3B4327E0F8D70024FA36 /* Main.storyboard */,
 				68BF3B4127E0F8D70024FA36 /* ViewController.swift */,
+				68D05F2A27ECE21C007FC3D8 /* NewsWeekViewController.swift */,
 				68D05F2927ECDC77007FC3D8 /* NewsWeek */,
 				68BF3B5527E106530024FA36 /* Models */,
 				68BF3B5627E106600024FA36 /* Manager */,
-				68BF3B5727E109E90024FA36 /* Storyboards */,
-				68BF3B5927E10A2C0024FA36 /* Resouces */,
-				68BF3B5827E10A0D0024FA36 /* Supporting */,
+				68BF3B3F27E0F8D70024FA36 /* SceneDelegate.swift */,
+				68BF3B3D27E0F8D70024FA36 /* AppDelegate.swift */,
 				68BF3B5C27E791510024FA36 /* AlertController.swift */,
+				68BF3B4627E0F8D80024FA36 /* Assets.xcassets */,
+				68BF3B4827E0F8D80024FA36 /* LaunchScreen.storyboard */,
 				68BF3B4B27E0F8D80024FA36 /* Info.plist */,
 			);
 			path = NewspaperAPP;
@@ -96,36 +102,12 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		68BF3B5727E109E90024FA36 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				68BF3B4827E0F8D80024FA36 /* LaunchScreen.storyboard */,
-			);
-			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		68BF3B5827E10A0D0024FA36 /* Supporting */ = {
-			isa = PBXGroup;
-			children = (
-				68BF3B3F27E0F8D70024FA36 /* SceneDelegate.swift */,
-				68BF3B3D27E0F8D70024FA36 /* AppDelegate.swift */,
-			);
-			path = Supporting;
-			sourceTree = "<group>";
-		};
-		68BF3B5927E10A2C0024FA36 /* Resouces */ = {
-			isa = PBXGroup;
-			children = (
-				68BF3B4627E0F8D80024FA36 /* Assets.xcassets */,
-			);
-			path = Resouces;
-			sourceTree = "<group>";
-		};
 		68D05F2927ECDC77007FC3D8 /* NewsWeek */ = {
 			isa = PBXGroup;
 			children = (
-				68D05F2A27ECE21C007FC3D8 /* NewsWeekViewController.swift */,
 				68D05F2C27ECE26F007FC3D8 /* NewsWeekViewModel.swift */,
+				68A92D6827EF4BFC00FD71E7 /* NewsWeekCollectionViewController.swift */,
+				68A92D6627EF489C00FD71E7 /* NewWeekCell.swift */,
 			);
 			path = NewsWeek;
 			sourceTree = "<group>";
@@ -208,7 +190,9 @@
 				68D05F2B27ECE21C007FC3D8 /* NewsWeekViewController.swift in Sources */,
 				68BF3B5D27E791510024FA36 /* AlertController.swift in Sources */,
 				68BF3B4027E0F8D70024FA36 /* SceneDelegate.swift in Sources */,
+				68A92D6927EF4BFC00FD71E7 /* NewsWeekCollectionViewController.swift in Sources */,
 				68D05F2D27ECE26F007FC3D8 /* NewsWeekViewModel.swift in Sources */,
+				68A92D6727EF489C00FD71E7 /* NewWeekCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
