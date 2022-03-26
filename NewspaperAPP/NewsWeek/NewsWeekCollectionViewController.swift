@@ -11,7 +11,7 @@ private let reuseIdentifier = "cell"
 
 class NewsWeekCollectionViewController: UICollectionViewController {
 
-    var viewModel:NewsWeekViewModelProtocol! {
+    var viewModel: NewsWeekCollectionViewModelProtocol! {
         didSet {
             
         }

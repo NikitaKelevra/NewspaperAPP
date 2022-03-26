@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func showNewsButtonPressed(_ sender: Any) {
-        NetworkManager.shared.fetchNews()
+//        NetworkManager.shared.fetchNews()
     }
     
     

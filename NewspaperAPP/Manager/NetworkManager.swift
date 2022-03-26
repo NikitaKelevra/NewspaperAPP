@@ -14,30 +14,28 @@ class NetworkManager {
     private init() {}
     
     private let urlAdress = "https://newsapi.org/v2/top-headlines?country=ru&apiKey=2d11d6b520594f1ea9f0bd3feabfdf12"
-    
-//    let alert = UIAlertController()
 
     // MARK: - Function
-    func fetchNews() {
+    func fetchNews(completion: @escaping (_ news: News) -> Void) {
+        
         guard let url = URL(string: urlAdress) else { return }
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data, let response = response else {
-                return
-            }
-            
-            print("Описание пришедшего (response) - \(response)")
+        
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            guard let data = data else { return }
             
             do {
                 let news = try JSONDecoder().decode(News.self, from: data)
-                print("Новости пришли - \(news)")
+                DispatchQueue.main.async {
+                    completion(news)
+                }
+                print("Новости пришли")
+                
             } catch let error {
                 print("Произошла ошибка парсинга - \(error.localizedDescription)")
                 debugPrint("Ключ парсинга отсутствует или опечатан - \(error)")
             }
             
-            
-        }.resume()
-        
+        }.resume()   
     }
         
     

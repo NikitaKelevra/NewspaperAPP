@@ -10,7 +10,7 @@ import UIKit
 class NewsWeekViewController: UIViewController {
 
     
-    var viewModel:NewsWeekViewModelProtocol! {
+    var viewModel:NewsWeekCollectionViewModelProtocol! {
         didSet {
             
         }
