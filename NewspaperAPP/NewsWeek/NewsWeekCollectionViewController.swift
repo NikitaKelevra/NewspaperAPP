@@ -13,7 +13,9 @@ class NewsWeekCollectionViewController: UICollectionViewController {
 
     var viewModel: NewsWeekCollectionViewModelProtocol! {
         didSet {
-            
+            viewModel.fetchNews {
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -22,7 +24,7 @@ class NewsWeekCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel = NewsWeekViewModel()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -41,20 +43,18 @@ class NewsWeekCollectionViewController: UICollectionViewController {
     // MARK: - UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 1
+        return viewModel.numberOfItems()
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? NewsWeekCell else { return cell }
     
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        cell.backgroundColor = .green
         
         return cell
     }

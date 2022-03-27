@@ -12,18 +12,16 @@ protocol NewsWeekCollectionViewModelProtocol: AnyObject {
     func fetchNews(complition: @escaping() -> Void)
     func numberOfItems() -> Int
     
-    init (news: News)
 }
 
 // MARK: - Class
 class NewsWeekViewModel: NewsWeekCollectionViewModelProtocol {
-    var articles: [Article] {
-        news.articles
-    }
+    var articles: [Article] = []
 
     func fetchNews(complition: @escaping () -> Void) {
         NetworkManager.shared.fetchNews { news in
-            self.news = news
+//            self.news = news
+            self.articles = news.articles
             complition()
         }
     }
@@ -32,9 +30,6 @@ class NewsWeekViewModel: NewsWeekCollectionViewModelProtocol {
         articles.count
     }
     
-    private var news: News
+//    private var news: News = ()
     
-    required init(news: News) {
-        self.news = news
-    }
 }
