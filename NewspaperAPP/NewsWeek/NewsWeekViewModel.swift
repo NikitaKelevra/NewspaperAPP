@@ -11,11 +11,13 @@ protocol NewsWeekCollectionViewModelProtocol: AnyObject {
     var articles: [Article] { get }
     func fetchNews(complition: @escaping() -> Void)
     func numberOfItems() -> Int
+    func cellViewModel(at indexPath: IndexPath) -> NewsCellViewModelProtocol
     
 }
 
 // MARK: - Class
 class NewsWeekViewModel: NewsWeekCollectionViewModelProtocol {
+    
     var articles: [Article] = []
 
     func fetchNews(complition: @escaping () -> Void) {
@@ -28,6 +30,11 @@ class NewsWeekViewModel: NewsWeekCollectionViewModelProtocol {
     
     func numberOfItems() -> Int {
         articles.count
+    }
+    
+    func cellViewModel(at indexPath: IndexPath) -> NewsCellViewModelProtocol {
+        let article = articles[indexPath.row]
+        return NewsCellViewModel(articles: article)
     }
     
 //    private var news: News = ()

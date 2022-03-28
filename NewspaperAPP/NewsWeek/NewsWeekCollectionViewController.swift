@@ -51,11 +51,16 @@ class NewsWeekCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? NewsWeekCell else { return cell }
-    
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? NewsWeekCell else {
+            print("---------Каст ячейки не удался-----")
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+            cell.backgroundColor = .red
+            return cell
+            }
         cell.backgroundColor = .green
         
+        cell.viewModel = viewModel.cellViewModel(at: indexPath)
+    
         return cell
     }
 

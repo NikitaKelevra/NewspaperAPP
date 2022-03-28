@@ -10,10 +10,10 @@ import UIKit
 class NewsWeekCell: UICollectionViewCell {
     var viewModel: NewsCellViewModelProtocol! {
         didSet {
-            var content = defaultContentConfiguration()
-            content.
+//            var content = defaultContentConfiguration()
+//            content.
             
-            contentConfiguration = content
+//            contentConfiguration = content
         }
     }
 }
