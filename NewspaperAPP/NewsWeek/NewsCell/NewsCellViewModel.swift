@@ -28,6 +28,7 @@ class NewsCellViewModel: NewsCellViewModelProtocol {
     }
     
     private let articles: Article
+    
     required init(articles: Article) {
         self.articles = articles
     }

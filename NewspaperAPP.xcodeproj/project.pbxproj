@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		68A92D6727EF489C00FD71E7 /* NewWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A92D6627EF489C00FD71E7 /* NewWeekCell.swift */; };
+		68A92D6727EF489C00FD71E7 /* NewsWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A92D6627EF489C00FD71E7 /* NewsWeekCell.swift */; };
 		68A92D6927EF4BFC00FD71E7 /* NewsWeekCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A92D6827EF4BFC00FD71E7 /* NewsWeekCollectionViewController.swift */; };
 		68A92D6B27EF87A200FD71E7 /* NewsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A92D6A27EF87A200FD71E7 /* NewsCellViewModel.swift */; };
 		68A92D6E27EF894300FD71E7 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A92D6D27EF894300FD71E7 /* ImageManager.swift */; };
@@ -24,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		68A92D6627EF489C00FD71E7 /* NewWeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWeekCell.swift; sourceTree = "<group>"; };
+		68A92D6627EF489C00FD71E7 /* NewsWeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWeekCell.swift; sourceTree = "<group>"; };
 		68A92D6827EF4BFC00FD71E7 /* NewsWeekCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWeekCollectionViewController.swift; sourceTree = "<group>"; };
 		68A92D6A27EF87A200FD71E7 /* NewsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellViewModel.swift; sourceTree = "<group>"; };
 		68A92D6D27EF894300FD71E7 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
@@ -56,7 +56,7 @@
 		68A92D6C27EF87A700FD71E7 /* NewsCell */ = {
 			isa = PBXGroup;
 			children = (
-				68A92D6627EF489C00FD71E7 /* NewWeekCell.swift */,
+				68A92D6627EF489C00FD71E7 /* NewsWeekCell.swift */,
 				68A92D6A27EF87A200FD71E7 /* NewsCellViewModel.swift */,
 			);
 			path = NewsCell;
@@ -86,11 +86,11 @@
 				68D05F2927ECDC77007FC3D8 /* NewsWeek */,
 				68BF3B5527E106530024FA36 /* Models */,
 				68BF3B5627E106600024FA36 /* Manager */,
+				68BF3B4827E0F8D80024FA36 /* LaunchScreen.storyboard */,
 				68BF3B3F27E0F8D70024FA36 /* SceneDelegate.swift */,
 				68BF3B3D27E0F8D70024FA36 /* AppDelegate.swift */,
 				68BF3B5C27E791510024FA36 /* AlertController.swift */,
 				68BF3B4627E0F8D80024FA36 /* Assets.xcassets */,
-				68BF3B4827E0F8D80024FA36 /* LaunchScreen.storyboard */,
 				68BF3B4B27E0F8D80024FA36 /* Info.plist */,
 			);
 			path = NewspaperAPP;
@@ -202,7 +202,7 @@
 				68BF3B4027E0F8D70024FA36 /* SceneDelegate.swift in Sources */,
 				68A92D6927EF4BFC00FD71E7 /* NewsWeekCollectionViewController.swift in Sources */,
 				68D05F2D27ECE26F007FC3D8 /* NewsWeekViewModel.swift in Sources */,
-				68A92D6727EF489C00FD71E7 /* NewWeekCell.swift in Sources */,
+				68A92D6727EF489C00FD71E7 /* NewsWeekCell.swift in Sources */,
 				68A92D6E27EF894300FD71E7 /* ImageManager.swift in Sources */,
 				68A92D6B27EF87A200FD71E7 /* NewsCellViewModel.swift in Sources */,
 			);

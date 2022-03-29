@@ -25,13 +25,8 @@ class NewsWeekCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = NewsWeekViewModel()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        
     }
 
     // MARK: - Navigation
@@ -51,17 +46,22 @@ class NewsWeekCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? NewsWeekCell else {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
+        guard let newsWeekCell = cell as? NewsWeekCell else {
+            
             print("---------Каст ячейки не удался-----")
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
             cell.backgroundColor = .red
             return cell
             }
-        cell.backgroundColor = .green
         
-        cell.viewModel = viewModel.cellViewModel(at: indexPath)
+        
+        newsWeekCell.backgroundColor = .green
+        
+        newsWeekCell.viewModel = viewModel.cellViewModel(at: indexPath)
     
-        return cell
+        return newsWeekCell
     }
 
     // MARK: - UICollectionViewDelegate
