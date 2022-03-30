@@ -24,7 +24,10 @@ class NewsWeekCell: UICollectionViewCell {
             self.titleLabel.text = viewModel.title
             self.descriptionLabel.text = viewModel.description
             
-            guard let imageData = viewModel.imageData else { return }
+            guard let imageData = viewModel.imageData else {
+                newsImageView.isHidden = true
+                return
+            }
             self.newsImageView.image = UIImage(data: imageData)
             
             
