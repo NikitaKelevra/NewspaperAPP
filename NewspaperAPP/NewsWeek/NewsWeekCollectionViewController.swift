@@ -18,14 +18,10 @@ class NewsWeekCollectionViewController: UICollectionViewController {
         }
     }
     
-    
-    private let reuseIdentifier = "cell"
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = NewsWeekViewModel()
-
+        collectionView.register(NewsWeekCell.self, forCellWithReuseIdentifier: NewsWeekCell.reuseId)
         
     }
 
@@ -47,7 +43,7 @@ class NewsWeekCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsWeekCell.reuseId, for: indexPath)
         
         guard let newsWeekCell = cell as? NewsWeekCell else { return cell }
         
