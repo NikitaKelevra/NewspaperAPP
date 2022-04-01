@@ -11,10 +11,12 @@ protocol NewsCellViewModelProtocol {
     var title: String { get }
     var description:String { get }
     var imageData: Data? { get }
+//    var heightOfItem: Float { get }
     init(articles: Article)
 }
 
 class NewsCellViewModel: NewsCellViewModelProtocol {
+    
     var title: String {
         articles.title
     }
@@ -26,6 +28,8 @@ class NewsCellViewModel: NewsCellViewModelProtocol {
     var imageData: Data? {
         ImageManager.shared.fetchImageData(from: articles.urlToImage)
     }
+    
+//    var heightOfItem: Float
     
     private let articles: Article
     

@@ -11,11 +11,12 @@ class NewsWeekCell: UICollectionViewCell {
     
     //MARK: - Properties
     static var reuseId: String = "cell"
+    private var heightOfItem: CGFloat = 30
     
-    let newsTitle = UILabel()
-    let newsDescription = UILabel()
-    let newsImage = UIImageView()
-    let imageAndDescriptionStack = UIStackView()
+    private let newsTitle = UILabel()
+    private let newsDescription = UILabel()
+    private let newsImage = UIImageView()
+    private let imageAndDescriptionStack = UIStackView()
     
     //MARK: - viewModel
     
@@ -29,61 +30,59 @@ class NewsWeekCell: UICollectionViewCell {
                 newsImage.isHidden = true
                 return
             }
+            newsImage.isHidden = false
             self.newsImage.image = UIImage(data: imageData)
         }
-    }
-    
-    //MARK: - Override init
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        setupElements()
-        setupConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     //MARK: - Private funcs
     
-    private func setupElements() {
-        newsTitle.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        imageAndDescriptionStack.addArrangedSubview(newsImage)
-        imageAndDescriptionStack.addArrangedSubview(newsDescription)
-        imageAndDescriptionStack.translatesAutoresizingMaskIntoConstraints = false
-        imageAndDescriptionStack.axis = .horizontal
-        imageAndDescriptionStack.distribution = .fill
-        
-        
-        
-        imageAndDescriptionStack.backgroundColor = .brown
-        
+    
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        setupElements()
         
 
+
+        return layoutAttributes
     }
+    
+    
+    private func setupElements() {
+        newsTitle.translatesAutoresizingMaskIntoConstraints = false
+//        newsTitle.backgroundColor = .green
+        newsTitle.numberOfLines = 0
+        newsTitle.font = .systemFont(ofSize: 15)
         
-    private func setupConstraints() {
+        
+        newsImage.translatesAutoresizingMaskIntoConstraints = false
+        newsImage.contentMode = .scaleAspectFit
+        newsImage.clipsToBounds = false
+             
+        
+        
         
         addSubview(newsTitle)
-        
         NSLayoutConstraint.activate([
             newsTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            newsTitle.heightAnchor.constraint(equalTo: newsTitle.widthAnchor),
+            newsTitle.heightAnchor.constraint(equalToConstant: 50),
             newsTitle.topAnchor.constraint(equalTo: self.topAnchor),
             newsTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
         
-        addSubview(imageAndDescriptionStack)
+        addSubview(newsImage)
         NSLayoutConstraint.activate([
-            imageAndDescriptionStack.topAnchor.constraint(equalTo: newsTitle.bottomAnchor),
-            imageAndDescriptionStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            imageAndDescriptionStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            imageAndDescriptionStack.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            newsImage.topAnchor.constraint(equalTo: newsTitle.bottomAnchor),
+            newsImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            newsImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            newsImage.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
-        
-        
     }
+    
+    
+    
+
+
 }
+
+
+

@@ -22,7 +22,6 @@ class NewsWeekViewModel: NewsWeekCollectionViewModelProtocol {
 
     func fetchNews(complition: @escaping () -> Void) {
         NetworkManager.shared.fetchNews { news in
-//            self.news = news
             self.articles = news.articles
             complition()
         }
@@ -37,6 +36,5 @@ class NewsWeekViewModel: NewsWeekCollectionViewModelProtocol {
         return NewsCellViewModel(articles: article)
     }
     
-//    private var news: News = ()
     
 }

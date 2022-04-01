@@ -13,7 +13,6 @@
 		68A92D6E27EF894300FD71E7 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A92D6D27EF894300FD71E7 /* ImageManager.swift */; };
 		68BF3B3E27E0F8D70024FA36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BF3B3D27E0F8D70024FA36 /* AppDelegate.swift */; };
 		68BF3B4027E0F8D70024FA36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BF3B3F27E0F8D70024FA36 /* SceneDelegate.swift */; };
-		68BF3B4227E0F8D70024FA36 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BF3B4127E0F8D70024FA36 /* StartViewController.swift */; };
 		68BF3B4527E0F8D70024FA36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BF3B4327E0F8D70024FA36 /* Main.storyboard */; };
 		68BF3B4727E0F8D80024FA36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68BF3B4627E0F8D80024FA36 /* Assets.xcassets */; };
 		68BF3B4A27E0F8D80024FA36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68BF3B4827E0F8D80024FA36 /* LaunchScreen.storyboard */; };
@@ -31,7 +30,6 @@
 		68BF3B3A27E0F8D70024FA36 /* NewspaperAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewspaperAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68BF3B3D27E0F8D70024FA36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68BF3B3F27E0F8D70024FA36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		68BF3B4127E0F8D70024FA36 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		68BF3B4427E0F8D70024FA36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		68BF3B4627E0F8D80024FA36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68BF3B4927E0F8D80024FA36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				68BF3B4327E0F8D70024FA36 /* Main.storyboard */,
-				68BF3B4127E0F8D70024FA36 /* StartViewController.swift */,
 				68D05F2927ECDC77007FC3D8 /* NewsWeek */,
 				68BF3B5527E106530024FA36 /* Models */,
 				68BF3B5627E106600024FA36 /* Manager */,
@@ -195,7 +192,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				68BF3B5227E0FE2E0024FA36 /* NewsModel.swift in Sources */,
-				68BF3B4227E0F8D70024FA36 /* StartViewController.swift in Sources */,
 				68BF3B5427E1056F0024FA36 /* NetworkManager.swift in Sources */,
 				68BF3B3E27E0F8D70024FA36 /* AppDelegate.swift in Sources */,
 				68BF3B5D27E791510024FA36 /* AlertController.swift in Sources */,

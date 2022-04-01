@@ -21,7 +21,9 @@ class NewsWeekCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = NewsWeekViewModel()
-        collectionView.register(NewsWeekCell.self, forCellWithReuseIdentifier: NewsWeekCell.reuseId)
+//        collectionView.register(NewsWeekCell.self, forCellWithReuseIdentifier: NewsWeekCell.reuseId)
+        
+        newsWeekCollectionViewLayout()
         
     }
 
@@ -33,9 +35,9 @@ class NewsWeekCollectionViewController: UICollectionViewController {
 
     // MARK: - UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+//        return 1
+//    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
@@ -88,27 +90,41 @@ class NewsWeekCollectionViewController: UICollectionViewController {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension NewsWeekCollectionViewController: UICollectionViewDelegateFlowLayout {
     
+    private func newsWeekCollectionViewLayout() {
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        layout.itemSize = CGSize(
+        
+        
+    }
+    
+    
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemsPerRow: CGFloat = 1
-        let paddingWitdth = 20 * (itemsPerRow + 1)
+        let paddingWitdth = 0 * (itemsPerRow + 1)
         let availableWidth = collectionView.frame.width - paddingWitdth
         let widthPerItem = availableWidth / itemsPerRow
         
+//        let string = viewModel.cellViewModel(at: indexPath).title
+//        let heightOfTitle = string.height(constraintedWidth: widthPerItem, font: UIFont.systemFont(ofSize: 15))
+//        let heightOfImage = viewModel.cellViewModel(at: indexPath).imageData
+//        let heightPerItem = heightOfTitle + heightOfImage
         
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-    }
-    
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-//                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 20
+//                        insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
 //    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
 //
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
 //                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -116,3 +132,15 @@ extension NewsWeekCollectionViewController: UICollectionViewDelegateFlowLayout {
 //    }
     
 }
+
+//extension String {
+//func height(constraintedWidth width: CGFloat, font: UIFont) -> CGFloat {
+//    let label =  UILabel(frame: CGRect(x: 0, y: 0, width: width, height: .greatestFiniteMagnitude))
+//    label.numberOfLines = 0
+//    label.text = self
+//    label.font = font
+//    label.sizeToFit()
+//
+//    return label.frame.height
+// }
+//}
