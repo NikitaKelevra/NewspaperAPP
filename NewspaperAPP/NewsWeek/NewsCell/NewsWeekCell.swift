@@ -16,7 +16,7 @@ class NewsWeekCell: UICollectionViewCell {
     private let newsTitle = UILabel()
     private let newsDescription = UILabel()
     private let newsImage = UIImageView()
-    private let imageAndDescriptionStack = UIStackView()
+    private let itemStack = UIStackView()
     
     //MARK: - viewModel
     
@@ -41,41 +41,51 @@ class NewsWeekCell: UICollectionViewCell {
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         setupElements()
         
-
+//        let layoutAttributes = super.preferredLayoutAttributesFitting(layoutAttributes)
+//
+//        let fittingSize = UIView.layoutFittingCompressedSize
+//
+//        layoutAttributes.frame.size = systemLayoutSizeFitting(
+//          fittingSize,
+//          withHorizontalFittingPriority: .fittingSizeLevel,
+//          verticalFittingPriority: .fittingSizeLevel
+//        )
 
         return layoutAttributes
     }
     
     
     private func setupElements() {
-        newsTitle.translatesAutoresizingMaskIntoConstraints = false
+//        newsTitle.translatesAutoresizingMaskIntoConstraints = false
 //        newsTitle.backgroundColor = .green
         newsTitle.numberOfLines = 0
-        newsTitle.font = .systemFont(ofSize: 15)
+        newsTitle.font = .systemFont(ofSize: 17)
+        newsTitle.textAlignment = .center
+        newsTitle.baselineAdjustment = .alignCenters
         
         
-        newsImage.translatesAutoresizingMaskIntoConstraints = false
+//        newsImage.translatesAutoresizingMaskIntoConstraints = false
         newsImage.contentMode = .scaleAspectFit
         newsImage.clipsToBounds = false
-             
         
+        itemStack.addArrangedSubview(newsTitle)
+        itemStack.addArrangedSubview(newsImage)
+        itemStack.axis = .vertical
+        itemStack.alignment = .center
+        itemStack.contentMode = .scaleAspectFit
+        itemStack.spacing = 5
         
+        itemStack.translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(newsTitle)
+        addSubview(itemStack)
+        
         NSLayoutConstraint.activate([
-            newsTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            newsTitle.heightAnchor.constraint(equalToConstant: 50),
-            newsTitle.topAnchor.constraint(equalTo: self.topAnchor),
-            newsTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            itemStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            itemStack.heightAnchor.constraint(equalTo: self.heightAnchor),
+            itemStack.topAnchor.constraint(equalTo: self.topAnchor),
+            itemStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
         
-        addSubview(newsImage)
-        NSLayoutConstraint.activate([
-            newsImage.topAnchor.constraint(equalTo: newsTitle.bottomAnchor),
-            newsImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            newsImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            newsImage.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
     }
     
     

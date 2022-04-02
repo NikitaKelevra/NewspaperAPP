@@ -12,6 +12,7 @@ protocol NewsWeekCollectionViewModelProtocol: AnyObject {
     func fetchNews(complition: @escaping() -> Void)
     func numberOfItems() -> Int
     func cellViewModel(at indexPath: IndexPath) -> NewsCellViewModelProtocol
+//    func detailsViewModel(at indexPath: IndexPath) -> NewsDetailsViewModelProtocol
     
 }
 

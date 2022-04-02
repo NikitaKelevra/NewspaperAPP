@@ -91,29 +91,30 @@ class NewsWeekCollectionViewController: UICollectionViewController {
 extension NewsWeekCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     private func newsWeekCollectionViewLayout() {
-//        let layout = UICollectionViewFlowLayout()
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        layout.itemSize = CGSize(width: widthOfItem(), height: widthOfItem())
 //        layout.scrollDirection = .vertical
-//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        layout.itemSize = CGSize(
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.minimumLineSpacing = 10
+//        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//        layout.estimatedItemSize.width = widthOfItem()
         
         
     }
     
-    
+    private func widthOfItem() -> CGFloat {
+        let itemsPerRow: CGFloat = 1
+//        let paddingWitdth = 0 * (itemsPerRow + 1)
+        let availableWidth = collectionView.frame.width
+        let widthPerItem = availableWidth / itemsPerRow
+        return widthPerItem
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemsPerRow: CGFloat = 1
-        let paddingWitdth = 0 * (itemsPerRow + 1)
-        let availableWidth = collectionView.frame.width - paddingWitdth
-        let widthPerItem = availableWidth / itemsPerRow
-        
-//        let string = viewModel.cellViewModel(at: indexPath).title
-//        let heightOfTitle = string.height(constraintedWidth: widthPerItem, font: UIFont.systemFont(ofSize: 15))
-//        let heightOfImage = viewModel.cellViewModel(at: indexPath).imageData
-//        let heightPerItem = heightOfTitle + heightOfImage
-        
-        return CGSize(width: widthPerItem, height: widthPerItem)
+
+
+        return CGSize(width: self.widthOfItem(), height: self.widthOfItem())
     }
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
