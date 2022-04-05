@@ -14,10 +14,13 @@ protocol NewsWeekCollectionViewModelProtocol: AnyObject {
     func cellViewModel(at indexPath: IndexPath) -> NewsCellViewModelProtocol
 //    func detailsViewModel(at indexPath: IndexPath) -> NewsDetailsViewModelProtocol
     
+    func detailsViewModel(at indexPath: IndexPath) -> DetailsViewModelProtocol
+    
 }
 
 // MARK: - Class
 class NewsWeekViewModel: NewsWeekCollectionViewModelProtocol {
+    
     
     var articles: [Article] = []
 
@@ -37,5 +40,9 @@ class NewsWeekViewModel: NewsWeekCollectionViewModelProtocol {
         return NewsCellViewModel(articles: article)
     }
     
+    func detailsViewModel(at indexPath: IndexPath) -> DetailsViewModelProtocol {
+        let article = articles[indexPath.row]
+        return DetailsViewModel(article: article)
+    }
     
 }

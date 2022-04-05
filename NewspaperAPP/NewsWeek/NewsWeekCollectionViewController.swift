@@ -10,6 +10,7 @@ import UIKit
 
 class NewsWeekCollectionViewController: UICollectionViewController {
 
+    // MARK: - Public properties
     var viewModel: NewsWeekCollectionViewModelProtocol! {
         didSet {
             viewModel.fetchNews {
@@ -18,11 +19,27 @@ class NewsWeekCollectionViewController: UICollectionViewController {
         }
     }
     
+    init() {
+        super.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Private properties
+    private var reuseId: String = "cell"
+    
+    // MARK: - override func viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = NewsWeekViewModel()
-//        collectionView.register(NewsWeekCell.self, forCellWithReuseIdentifier: NewsWeekCell.reuseId)
         
+        collectionView.register(NewsWeekCell.self, forCellWithReuseIdentifier: reuseId)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        
+        
+        viewModel = NewsWeekViewModel()
         newsWeekCollectionViewLayout()
         
     }
@@ -30,14 +47,18 @@ class NewsWeekCollectionViewController: UICollectionViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+//        if segue.identifier == "ShowDetails" {
+//            let detailsVC = segue.destination as! DetailsViewController
+//            detailsVC.viewModel = sender as? DetailsViewModelProtocol
+//        }
     }
 
 
     // MARK: - UICollectionViewDataSource
 
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
@@ -45,7 +66,7 @@ class NewsWeekCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsWeekCell.reuseId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reuseId, for: indexPath)
         
         guard let newsWeekCell = cell as? NewsWeekCell else { return cell }
         
@@ -56,6 +77,18 @@ class NewsWeekCollectionViewController: UICollectionViewController {
 
     // MARK: - UICollectionViewDelegate
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+//        let detailsViewModel = viewModel.detailsViewModel(at: indexPath)
+//        performSegue(withIdentifier: "ShowDetails", sender: detailsViewModel)
+        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let detailsVC = storyboard.instantiateViewController(withIdentifier: "ShowDetails") as? DetailsViewController else { return }
+        
+        show(detailsVC, sender: nil)
+    }
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -91,9 +124,19 @@ class NewsWeekCollectionViewController: UICollectionViewController {
 extension NewsWeekCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     private func newsWeekCollectionViewLayout() {
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+
+        guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        
+        
+//        UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc] init];
+//        flowLayout.itemSize = CGSizeMake(100, 100);
+//        [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+//        self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:flowLayout];
+//        [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+        
+
 //        layout.itemSize = CGSize(width: widthOfItem(), height: widthOfItem())
-//        layout.scrollDirection = .vertical
+        layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = 10
 //        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
@@ -111,7 +154,8 @@ extension NewsWeekCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
 
 
         return CGSize(width: self.widthOfItem(), height: self.widthOfItem())

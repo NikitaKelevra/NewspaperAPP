@@ -10,7 +10,7 @@ import UIKit
 class NewsWeekCell: UICollectionViewCell {
     
     //MARK: - Properties
-    static var reuseId: String = "cell"
+
     private var heightOfItem: CGFloat = 30
     
     private let newsTitle = UILabel()

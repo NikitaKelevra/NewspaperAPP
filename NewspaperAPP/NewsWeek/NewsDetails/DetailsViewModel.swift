@@ -9,7 +9,7 @@ import Foundation
 
 protocol DetailsViewModelProtocol {
     var title: String { get }
-    var description:String { get }
+    var description: String { get }
     var imageData: Data? { get }
     
     init(article: Article)
