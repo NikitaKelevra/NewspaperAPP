@@ -18,7 +18,11 @@ class NewsWeekCollectionViewController: UICollectionViewController {
             }
         }
     }
+     
+    // MARK: - Private properties
+    private var reuseId: String = "cell"
     
+    // MARK: - Initialization
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
@@ -26,32 +30,23 @@ class NewsWeekCollectionViewController: UICollectionViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Private properties
-    private var reuseId: String = "cell"
-    
     // MARK: - override func viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionView.register(NewsWeekCell.self, forCellWithReuseIdentifier: reuseId)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        
-        
+        setupCollectionView()
+        setupNavigationBar()
         viewModel = NewsWeekViewModel()
-        newsWeekCollectionViewLayout()
         
     }
 
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-//        if segue.identifier == "ShowDetails" {
-//            let detailsVC = segue.destination as! DetailsViewController
-//            detailsVC.viewModel = sender as? DetailsViewModelProtocol
-//        }
-    }
+//    // MARK: - Navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+////        if segue.identifier == "ShowDetails" {
+////            let detailsVC = segue.destination as! DetailsViewController
+////            detailsVC.viewModel = sender as? DetailsViewModelProtocol
+////        }
+//    }
 
 
     // MARK: - UICollectionViewDataSource
@@ -65,13 +60,9 @@ class NewsWeekCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reuseId, for: indexPath)
-        
         guard let newsWeekCell = cell as? NewsWeekCell else { return cell }
-        
         newsWeekCell.viewModel = viewModel.cellViewModel(at: indexPath)
-    
         return newsWeekCell
     }
 
@@ -79,14 +70,11 @@ class NewsWeekCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-//        let detailsViewModel = viewModel.detailsViewModel(at: indexPath)
-//        performSegue(withIdentifier: "ShowDetails", sender: detailsViewModel)
         
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let detailsVC = storyboard.instantiateViewController(withIdentifier: "ShowDetails") as? DetailsViewController else { return }
-        
-        show(detailsVC, sender: nil)
+        let detailsVC = DetailsViewController()
+        detailsVC.viewModel = viewModel.detailsViewModel(at: indexPath)
+        present(detailsVC, animated: true)
+ 
     }
     
     /*
@@ -123,17 +111,10 @@ class NewsWeekCollectionViewController: UICollectionViewController {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension NewsWeekCollectionViewController: UICollectionViewDelegateFlowLayout {
     
-    private func newsWeekCollectionViewLayout() {
-
+    private func setupCollectionView() {
+        collectionView.register(NewsWeekCell.self, forCellWithReuseIdentifier: reuseId)
         guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-        
-        
-//        UICollectionViewFlowLayout* flowLayout = [[UICollectionViewFlowLayout alloc] init];
-//        flowLayout.itemSize = CGSizeMake(100, 100);
-//        [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-//        self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:flowLayout];
-//        [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-        
+
 
 //        layout.itemSize = CGSize(width: widthOfItem(), height: widthOfItem())
         layout.scrollDirection = .vertical
@@ -144,6 +125,21 @@ extension NewsWeekCollectionViewController: UICollectionViewDelegateFlowLayout {
         
         
     }
+    
+    private func setupNavigationBar() {
+        title = "NewsWeek"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = UIColor.brown
+        
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+    }
+    
     
     private func widthOfItem() -> CGFloat {
         let itemsPerRow: CGFloat = 1
