@@ -11,7 +11,8 @@ import UIKit
 class NewsWeekCollectionViewController: UICollectionViewController {
 
     // MARK: - Public properties
-    var viewModel: NewsWeekCollectionViewModelProtocol! {
+    private var viewModel: NewsWeekCollectionViewModelProtocol! {
+        /// В случае изменения данных `viewModel` перезагружает `collectionView` через обзёрвер
         didSet {
             viewModel.fetchNews {
                 self.collectionView.reloadData()
@@ -23,6 +24,7 @@ class NewsWeekCollectionViewController: UICollectionViewController {
     private var reuseId: String = "cell"
     
     // MARK: - Initialization
+    /// Инициализация collectionViewLayout
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
@@ -33,9 +35,9 @@ class NewsWeekCollectionViewController: UICollectionViewController {
     // MARK: - override func viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
-        setupNavigationBar()
-        viewModel = NewsWeekViewModel()
+        setupCollectionView()               /// Регистрация и настройка layout CollectionView
+        setupNavigationBar()                /// Настройка текста, вида и шрифта Navigation Bar
+        viewModel = NewsWeekViewModel()     /// Передача данных через viewModel в MVVM
         
     }
 
@@ -71,10 +73,11 @@ class NewsWeekCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         
+        ///  Переход на другой экран детализации с передачей новостных данных
         let detailsVC = DetailsViewController()
         detailsVC.viewModel = viewModel.detailsViewModel(at: indexPath)
-        present(detailsVC, animated: true)
- 
+//        present(detailsVC, animated: true)
+        self.navigationController?.pushViewController(detailsVC, animated: true)
     }
     
     /*
@@ -110,7 +113,7 @@ class NewsWeekCollectionViewController: UICollectionViewController {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension NewsWeekCollectionViewController: UICollectionViewDelegateFlowLayout {
-    
+    /// Настройка `Collection View`
     private func setupCollectionView() {
         collectionView.register(NewsWeekCell.self, forCellWithReuseIdentifier: reuseId)
         guard let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
@@ -122,10 +125,9 @@ extension NewsWeekCollectionViewController: UICollectionViewDelegateFlowLayout {
         layout.minimumLineSpacing = 10
 //        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
 //        layout.estimatedItemSize.width = widthOfItem()
-        
-        
     }
     
+    /// Настройка `Navigation Bar`
     private func setupNavigationBar() {
         title = "NewsWeek"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -140,16 +142,16 @@ extension NewsWeekCollectionViewController: UICollectionViewDelegateFlowLayout {
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
     }
     
-    
+    /// Функция расчитывает возможную ширину ячеек ( item )
     private func widthOfItem() -> CGFloat {
-        let itemsPerRow: CGFloat = 1
+        let itemsPerRow: CGFloat = 1   ///  Количество ячеек в строке
 //        let paddingWitdth = 0 * (itemsPerRow + 1)
-        let availableWidth = collectionView.frame.width
-        let widthPerItem = availableWidth / itemsPerRow
+        let availableWidth = collectionView.frame.width /// допустимая ширина окна
+        let widthPerItem = availableWidth / itemsPerRow /// ширина ячеек в строке с учетом их количества
         return widthPerItem
     }
     
-    
+    ///  Функция определяет конечный размер ячеек
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 

@@ -36,8 +36,9 @@ class DetailsViewController: UIViewController {
     // MARK: - override func viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupProperties()
+        view.backgroundColor = .darkGray
         setupElementsView()
+        setupProperties()
     }
 
     
