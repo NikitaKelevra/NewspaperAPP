@@ -11,20 +11,21 @@ import UIKit
 class NewsWeekCollectionViewController: UICollectionViewController {
 
     // MARK: - Public properties
+     
+    // MARK: - Private properties
     private var viewModel: NewsWeekCollectionViewModelProtocol! {
-        /// В случае изменения данных `viewModel` перезагружает `collectionView` через обзёрвер
+        /// В случае изменения данных `viewModel` перезагружает `collectionView` через обзёрвер `didSet`
         didSet {
             viewModel.fetchNews {
                 self.collectionView.reloadData()
             }
         }
     }
-     
-    // MARK: - Private properties
+    
     private var reuseId: String = "cell"
     
     // MARK: - Initialization
-    /// Инициализация collectionViewLayout
+    /// Инициализация `collectionViewLayout`
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
@@ -76,8 +77,8 @@ class NewsWeekCollectionViewController: UICollectionViewController {
         ///  Переход на другой экран детализации с передачей новостных данных
         let detailsVC = DetailsViewController()
         detailsVC.viewModel = viewModel.detailsViewModel(at: indexPath)
-//        present(detailsVC, animated: true)
-        self.navigationController?.pushViewController(detailsVC, animated: true)
+        present(detailsVC, animated: true)
+//        self.navigationController?.pushViewController(detailsVC, animated: true)
     }
     
     /*
